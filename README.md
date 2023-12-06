@@ -4,17 +4,6 @@
 
 Este proyecto contiene pruebas automatizadas utilizando Selenium para interactuar con una aplicación web.
 
-# Carpetas para Recursos
-
-scripts: Contiene los scripts de prueba escritos en Selenium.
-
-screenshots: Capturas de pantalla generadas durante las pruebas.
-
-docs: Documentación adicional, informe de prueba, etc.
-
-driver: Drivers del navegador a utilizar.
-
-
 
 # Historias de usuario 
 
