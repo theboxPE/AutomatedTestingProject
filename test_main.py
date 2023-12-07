@@ -6,37 +6,37 @@ import time
 
 def test_element_by_class():
     driver = webdriver.Chrome()
-    driver.get('')
+    driver.get('https://testautomationpractice.blogspot.com/')
 
-    web_element = driver.find_element(By.CLASS_NAME, '')
-    web_element.click()
+    web_element = driver.find_element(By.CLASS_NAME, 'form-control')
+    web_element.send_keys("Funcionamiento correcto!")
 
-    driver.save_screenshot('./imagen1.png')
+    driver.save_screenshot('Screenshots/imagen1.png')
 
-    time.sleep(10)
+    time.sleep(5)
 
 
 def test_element_by_id():
     driver = webdriver.Chrome()
-    driver.get("")
+    driver.get('https://testautomationpractice.blogspot.com/')
 
-    web_element = driver.find_element(By.ID, "")
-    web_element.send_keys("")
+    web_element = driver.find_element(By.ID, "textarea")
+    web_element.send_keys("Realizando pruebas con selenium webdriver")
 
-    driver.save_screenshot('./imagen2.png')
+    driver.save_screenshot('Screenshots/imagen2.png')
 
-    time.sleep(10)
+    time.sleep(5)
 
 
 def test_checkbox():
     driver = webdriver.Chrome()
-    driver.get("")
+    driver.get('https://testautomationpractice.blogspot.com/')
 
-    web_element = driver.find_element(By.ID, "")
-    driver.switch_to.frame(web_element)
+    web_element = driver.find_element(By.ID, "male")
 
-    checkbox = driver.find_element(By.NAME, "")
+    checkbox = driver.find_element(By.NAME, "gender")
     driver.execute_script("arguments[0].scrollIntoView();", checkbox)
+
     print("seleccionado antes del click: ", checkbox.is_selected())
     time.sleep(2)
 
@@ -46,39 +46,40 @@ def test_checkbox():
     print("tipo de elemento:", checkbox.get_attribute('type'))
     print("seleccionado despues del click: ", checkbox.is_selected())
 
-    driver.save_screenshot('./imagen3.png')
+    driver.save_screenshot('Screenshots/imagen3.png')
 
     time.sleep(5)
 
 
 def test_calendario():
     driver = webdriver.Chrome()
-    driver.get("")
+    driver.get('https://testautomationpractice.blogspot.com/')
 
-    calendario = driver.find_element(By.ID, "")
+    calendario = driver.find_element(By.ID, "datepicker")
+    driver.execute_script("arguments[0].scrollIntoView();", calendario)
     calendario.click()
     time.sleep(2)
 
-    driver.find_element(By.XPATH, "").click()
+    driver.find_element(By.XPATH, "//*[@class = 'ui-state-default' and text() = '1']").click()
     time.sleep(2)
     calendario.click()
-    driver.find_element(By.XPATH, "").click()
+    driver.find_element(By.XPATH, "//*[@class = 'ui-state-default' and text() = '24']").click()
     time.sleep(4)
 
     calendario.clear()
-    calendario.send_keys('01/01/1000')
-    time.sleep(4)
+    calendario.send_keys('12/01/2023')
+    time.sleep(5)
 
-    driver.save_screenshot('./imagen4.png')
+    driver.save_screenshot('Screenshots/imagen4.png')
 
 
 def test_navegacion_browser():
     driver = webdriver.Chrome()
 
-    driver.get("")
+    driver.get("https://www.mlb.com/es")
     print("url actual: ", driver.current_url)
 
-    driver.find_element(By.LINK_TEXT, "").click()
+    driver.find_element(By.XPATH, '//*[@id="react-header"]/div/header/div/div/div[2]/div[1]/nav[1]/ul/li[2]/div[1]/a').click()
     print("url actual: ", driver.current_url)
 
     driver.back()
@@ -90,6 +91,6 @@ def test_navegacion_browser():
     driver.refresh()
     print("url actual: ", driver.current_url)
 
-    driver.save_screenshot('./imagen5.png')
+    driver.save_screenshot('Screenshots/imagen5.png')
 
     time.sleep(5)
